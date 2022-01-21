@@ -1,119 +1,92 @@
-# NIST Open-Source Software Repository Template
+# (Proposal) Unified Cyber Ontology (UCO) MIME Taxonomy
 
-This is the recommended template for NIST employees to use for new
-open-source software repositories. To use it, please click on the
-green "Use this template" button at the top of the [page][gh-rep].
 
-## Requirements to post public repositories to [usnistgov][gh-nst]
+## Disclaimer
 
-Use of this resource by NIST employees is subject to the
-[Rules of Behavior for GitHub (PDF)][gh-rob]. For details, please
-consult the Office of Data & Informatics'
-[Quickstart Guide to GitHub at NIST][gh-odi].
+Participation by NIST in the creation of the documentation of mentioned software is not intended to imply a recommendation or endorsement by the National Institute of Standards and Technology, nor is it intended to imply that any specific software is necessarily the best available for the purpose.
 
-### README
 
-Each repository will contain a [README][wk-rdm] file, preferably
-formatted using GitHub-flavored [Markdown][gh-mdn] and named
-`README.md`. This file must contain:
+## Software and Data description
 
-1. Software or Data description
-   - Statements of purpose and maturity
-   - Technical installation instructions
-1. Contact information
-   - PI name, NIST OU, Division, and Group names
-   - Contact email address at NIST
-   - Details of mailing lists, chatrooms, and discussion forums,
-     where applicable
-1. Related Material
-   - URL for associated project on <nist.gov> or other Department of
-     Commerce site, if available
-   - References to user guides if stored outside of GitHub
-1. Directions on appropriate citation with example text
-1. References to any included non-public domain software modules, and
-   additional license language if needed, *e.g.* [BSD][li-bsd],
-   [GPL][li-gpl], or [MIT][li-mit]
 
-### Terms of Use: `LICENSE.md`
+### Repository maturity
 
-Each repository will contain a file named `LICENSE.md` that is
-phrased in compliance with the Public Access to NIST Research
-[*Copyright, Fair Use, and Licensing Statement for SRD, Data, and
-Software*][nist-open].
+*This repository is UNDER PROPOSAL and subject to revision and/or rejection by the UCO community.  Feedback is welcome, and can be provided in UCO Jira ticket [OC-204](https://unifiedcyberontology.atlassian.net/browse/OC-204), its associated Change Proposal page, or directly on this repository as an Issue.*
 
-- You may use the version of [LICENSE.md](LICENSE.md) included in
-  this repository
-- When in doubt, copy and include the contents of the relevant
-  statement inside a "blue box" in its entirety
-- *After* the NIST disclaimer of copyright and warranty, include
-  copyright and licensing statements of any third-party software that
-  are legally bundled with the code in compliance with the conditions
-  of those licenses
-  - *Note:* There is [ongoing discussion](gh-tpl) on the best way to
-    handle attribution and license inclusion for third-party
-    dependencies: please weigh in!
+IRIs and/or URLs referenced in this repository are not yet operational.
 
-### CODEOWNERS
 
-This template repository includes a file named [CODEOWNERS](CODEOWNERS),
-which visitors can view to discover which GitHub users are "in charge"
-of the repository.
-More crucially, GitHub uses it to assign reviewers on pull requests.
-GitHub documents the file (and how to write one) [here][gh-cdo].
+### Data purpose
 
-***Please update this file*** to point to your own account or team,
-so that the [Open-Source Team][gh-ost] doesn't get spammed with
-spurious review requests. *Thanks!*
+This repository provides a SKOS taxonomy as a member of UCO ontological resources.  The taxonomy converts the [IANA Media Types registry](https://www.iana.org/assignments/media-types/) into SKOS under a UCO namespace, following a mostly two-tier [`skos:ConceptScheme`](https://www.w3.org/TR/skos-reference/#schemes):
 
-### Repository Metadata: `CODEMETA.yaml`
+* The `ConceptScheme`'s top-level concepts are each Media Type Registry, such as `application`, `image`, etc.
+* The second tier of `Concept`s is the media type in each registry, such as `application/zip`, `image/gif`, etc.
+* Some extension media types not part of IANA are defined for various reasons, and may or may not be submitted in the future for standardization to IANA.  These extensions follow the non-registration practice of [RFC 6838, Section 3.4], and all include the string [`/x-uco-`].
 
-This repository includes a file named `CODEMETA.yaml`, used by the NIST
-Software Portal to sort your work under the appropriate thematic
-homepage. ***Please update this file*** with the appropriate "theme" and
-"category" for your code/data/software. The Tier 1 themes are:
+This repository's primary product is a monolithic ontology and taxonomy file, serialized in Turtle, [`mime.ttl`](taxonomy/mime/mime.ttl).
 
-- [Advanced communications](https://www.nist.gov/advanced-communications)
-- [Bioscience](https://www.nist.gov/bioscience)
-- [Buildings and Construction](https://www.nist.gov/buildings-construction)
-- [Chemistry](https://www.nist.gov/chemistry)
-- [Electronics](https://www.nist.gov/electronics)
-- [Energy](https://www.nist.gov/energy)
-- [Environment](https://www.nist.gov/environment)
-- [Fire](https://www.nist.gov/fire)
-- [Forensic Science](https://www.nist.gov/forensic-science)
-- [Health](https://www.nist.gov/health)
-- [Information Technology](https://www.nist.gov/information-technology)
-- [Infrastructure](https://www.nist.gov/infrastructure)
-- [Manufacturing](https://www.nist.gov/manufacturing)
-- [Materials](https://www.nist.gov/materials)
-- [Mathematics and Statistics](https://www.nist.gov/mathematics-statistics)
-- [Metrology](https://www.nist.gov/metrology)
-- [Nanotechnology](https://www.nist.gov/nanotechnology)
-- [Neutron research](https://www.nist.gov/neutron-research)
-- [Performance excellence](https://www.nist.gov/performance-excellence)
-- [Physics](https://www.nist.gov/physics)
-- [Public safety](https://www.nist.gov/public-safety)
-- [Resilience](https://www.nist.gov/resilience)
-- [Standards](https://www.nist.gov/standards)
-- [Transportation](https://www.nist.gov/transportation)
+The expected usage pattern of this file is via importing or referencing its versioned or unversioned IRI as a URL, e.g.:
 
-### FAIR Software & Data
+```turtle
+<http://example.org/versioned-importing-ontology>
+  a owl:Ontology ;
+  rdfs:comment "An example ontology that imports the monolithic taxonomy via its versioned IRI."@en ;
+  owl:imports <https://taxonomy.unifiedcyberontology.org/uco/mime/0.0.1> ;
+  .
+```
 
-Some advice and links for producing FAIR software and data can be
-found in [`fair-software.md`](fair-software.md).
+or:
 
-<!-- References -->
+```turtle
+<http://example.org/unversioned-importing-ontology>
+  a owl:Ontology ;
+  rdfs:comment "An example ontology that imports the monolithic taxonomy via its versioned IRI."@en ;
+  owl:imports <https://taxonomy.unifiedcyberontology.org/uco/mime> ;
+  .
+```
 
-[gh-cdo]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
-[gh-mdn]: https://github.github.com/gfm/
-[gh-nst]: https://github.com/usnistgov
-[gh-odi]: https://odiwiki.nist.gov/ODI/GitHub.html
-[gh-ost]: https://github.com/usnistgov/teams/opensource-team
-[gh-rob]: https://odiwiki.nist.gov/pub/ODI/GitHub/GHROB.pdf
-[gh-rep]: https://github.com/usnistgov/opensource-repo/
-[gh-tpl]: https://github.com/usnistgov/carpentries-development/discussions/3
-[li-bsd]: https://opensource.org/licenses/bsd-license
-[li-gpl]: https://opensource.org/licenses/gpl-license
-[li-mit]: https://opensource.org/licenses/mit-license
-[nist-open]: https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications
-[wk-rdm]: https://en.wikipedia.org/wiki/README
+
+### Software purpose
+
+Software is included to generate, format, and test the functionality of `mime.ttl`.  Software review mechanisms are also included.
+
+End users of this repository should have no need to interface with the software directly.  The software is provided for maintainers within the UCO community.
+
+
+#### Technical installation instructions
+
+This repository includes no installable software.
+
+Contributors and maintainers should review [CONTRIBUTE.md](CONTRIBUTE.md).
+
+
+## Contact information
+
+* PI name: [Alex Nelson](https://www.nist.gov/people/alexander-nelson), [Information Technology Laboratory](https://www.nist.gov/itl), [Computer Security Division](https://www.nist.gov/itl/csd), [Security Components and Mechanisms Group](https://www.nist.gov/itl/csd/security-components-and-mechanisms), [alexander.nelson@nist.gov](mailto:alexander.nelson@nist.gov).
+
+
+## Related Material
+
+* [Unified Cyber Ontology](https://unifiedcyberontology.org/)
+* [CASE Ontology](https://casecyberontology.org/)
+* [SKOS Simple Knowledge Organization System Reference](https://www.w3.org/TR/skos-reference/)
+* [IANA Media Types Registry](https://www.iana.org/assignments/media-types/)
+* [Dublin Core Terms](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/)
+
+
+## Directions on appropriate citation
+
+To cite this resource, please use this DOI:
+
+TODO
+
+
+## Non-public-domain software modules
+
+Certain non-public-domain software resources are used in this repository, but not re-distributed.  Their usage is governed by their respective licenses.
+
+
+## Terms of Use
+
+See [LICENSE.md](LICENSE.md).

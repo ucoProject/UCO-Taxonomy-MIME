@@ -33,7 +33,7 @@ categories:
   # - performance-and-workflow
   - scientific-software
   # - simulation
-  # - tools
+  - tools
   # - visualization
 
 themes:
@@ -111,9 +111,9 @@ themes:
   #     - Structural fire resistance
   #     - Wildland-Urban interface fire
   #
-  # - Forensic Science
+  - Forensic Science
   #     - Ballistics
-  #     - Digital evidence
+      - Digital evidence
   #     - DNA and biological evidence
   #     - Drugs and toxicology
   #     - Fingerprints and pattern evidence
@@ -128,7 +128,7 @@ themes:
   #     - Precision medicine
   #     - Regenerative medicine
   #
-  # - Information Technology
+  - Information Technology
   #     - Artificial intelligence
   #     - Biometrics
   #     - Cloud computing and virtualization
@@ -137,8 +137,8 @@ themes:
   #     - Conformance testing
   #     - Cyber-physical systems
   #         - Smart cities
-  #     - Cybersecurity
-  #         - Configuration and vulnerability management
+      - Cybersecurity
+          - Configuration and vulnerability management
   #         - Cryptography
   #         - Cybersecurity Education and Workforce Development
   #         - Risk management
@@ -146,29 +146,29 @@ themes:
   #         - Human language technology
   #         - Information retrieval
   #         - Natural language processing
-  #     - Data entry
+      - Data entry
   #     - Federal information standards (FIPS)
   #     - Health IT
   #     - Identity and access management
   #     - Internet of Things (IoT)
   #     - Interoperability testing
   #     - Mobile
-  #     - Networking
+      - Networking
   #         - Mobile and Wireless Networking
-  #         - Network Management and Monitoring
+          - Network Management and Monitoring
   #         - Network Modeling and Analysis
-  #         - Network Security and Robustness
-  #         - Network Test and Measurement
+          - Network Security and Robustness
+          - Network Test and Measurement
   #         - Next Generation Networks
   #         - Protocol Design and Standardization
   #         - Software-defined and virtual networks
   #     - Privacy
-  #     - Software research
-  #         - Software assurance
+      - Software research
+          - Software assurance
   #         - Software performance
-  #         - Software testing
-  #     - Usability and human factors
-  #         - Accessibility
+          - Software testing
+      - Usability and human factors
+          - Accessibility
   #     - Video analytics
   #     - Visualization research
   #     - Voting systems
@@ -300,13 +300,13 @@ themes:
   #     - Resilient materials
   #     - Windstorm impact reduction
   #
-  # - Standards
+  - Standards
   #     - Accreditation
   #     - Calibration Services
   #     - Conformity assessment
-  #     - Documentary standards
+      - Documentary standards
   #     - Frameworks
-  #     - Reference data
+      - Reference data
   #     - Reference instruments
   #     - Reference materials
   #     - Standards education
