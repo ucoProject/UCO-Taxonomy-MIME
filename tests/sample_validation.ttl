@@ -1,0 +1,144 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix uco-observable: <https://ontology.unifiedcyberontology.org/uco/observable/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[]
+	a sh:ValidationReport ;
+	sh:conforms "true"^^xsd:boolean ;
+	sh:result
+		[
+			a sh:ValidationResult ;
+			sh:focusNode [
+				a uco-observable:ContentDataFacet ;
+				uco-observable:mimeType <http://purl.org/NET/mediatypes/application/gzip> ;
+			] ;
+			sh:resultMessage "Value is not an instance of types:MIMEFormat or one of its subclasses.  Please consider using a value having type types:IANAMediaType or types:NonIANAMediaType."@en ;
+			sh:resultPath uco-observable:mimeType ;
+			sh:resultSeverity sh:Info ;
+			sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+			sh:sourceShape uco-observable:mimeType-class-types-MIMEFormat ;
+			sh:value <http://purl.org/NET/mediatypes/application/gzip> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode [
+				a uco-observable:ContentDataFacet ;
+				uco-observable:mimeType <http://purl.org/NET/mediatypes/application/json> ;
+			] ;
+			sh:resultMessage "Value is not an instance of types:MIMEFormat or one of its subclasses.  Please consider using a value having type types:IANAMediaType or types:NonIANAMediaType."@en ;
+			sh:resultPath uco-observable:mimeType ;
+			sh:resultSeverity sh:Info ;
+			sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+			sh:sourceShape uco-observable:mimeType-class-types-MIMEFormat ;
+			sh:value <http://purl.org/NET/mediatypes/application/json> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode [
+				a uco-observable:ContentDataFacet ;
+				uco-observable:mimeType <http://purl.org/NET/mediatypes/application/ld+json> ;
+			] ;
+			sh:resultMessage "Value is not an instance of types:MIMEFormat or one of its subclasses.  Please consider using a value having type types:IANAMediaType or types:NonIANAMediaType."@en ;
+			sh:resultPath uco-observable:mimeType ;
+			sh:resultSeverity sh:Info ;
+			sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+			sh:sourceShape uco-observable:mimeType-class-types-MIMEFormat ;
+			sh:value <http://purl.org/NET/mediatypes/application/ld+json> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode [
+				a uco-observable:ContentDataFacet ;
+				uco-observable:mimeType <http://purl.org/NET/mediatypes/application/rdf+xml> ;
+			] ;
+			sh:resultMessage "Value is not an instance of types:MIMEFormat or one of its subclasses.  Please consider using a value having type types:IANAMediaType or types:NonIANAMediaType."@en ;
+			sh:resultPath uco-observable:mimeType ;
+			sh:resultSeverity sh:Info ;
+			sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+			sh:sourceShape uco-observable:mimeType-class-types-MIMEFormat ;
+			sh:value <http://purl.org/NET/mediatypes/application/rdf+xml> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode [
+				a uco-observable:ContentDataFacet ;
+				uco-observable:mimeType <http://purl.org/NET/mediatypes/application/vnd.ms-excel> ;
+			] ;
+			sh:resultMessage "Value is not an instance of types:MIMEFormat or one of its subclasses.  Please consider using a value having type types:IANAMediaType or types:NonIANAMediaType."@en ;
+			sh:resultPath uco-observable:mimeType ;
+			sh:resultSeverity sh:Info ;
+			sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+			sh:sourceShape uco-observable:mimeType-class-types-MIMEFormat ;
+			sh:value <http://purl.org/NET/mediatypes/application/vnd.ms-excel> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode [
+				a uco-observable:ContentDataFacet ;
+				uco-observable:mimeType <http://purl.org/NET/mediatypes/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet> ;
+			] ;
+			sh:resultMessage "Value is not an instance of types:MIMEFormat or one of its subclasses.  Please consider using a value having type types:IANAMediaType or types:NonIANAMediaType."@en ;
+			sh:resultPath uco-observable:mimeType ;
+			sh:resultSeverity sh:Info ;
+			sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+			sh:sourceShape uco-observable:mimeType-class-types-MIMEFormat ;
+			sh:value <http://purl.org/NET/mediatypes/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode [
+				a uco-observable:ContentDataFacet ;
+				uco-observable:mimeType <http://purl.org/NET/mediatypes/application/xml> ;
+			] ;
+			sh:resultMessage "Value is not an instance of types:MIMEFormat or one of its subclasses.  Please consider using a value having type types:IANAMediaType or types:NonIANAMediaType."@en ;
+			sh:resultPath uco-observable:mimeType ;
+			sh:resultSeverity sh:Info ;
+			sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+			sh:sourceShape uco-observable:mimeType-class-types-MIMEFormat ;
+			sh:value <http://purl.org/NET/mediatypes/application/xml> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode [
+				a uco-observable:ContentDataFacet ;
+				uco-observable:mimeType <http://purl.org/NET/mediatypes/application/zip> ;
+			] ;
+			sh:resultMessage "Value is not an instance of types:MIMEFormat or one of its subclasses.  Please consider using a value having type types:IANAMediaType or types:NonIANAMediaType."@en ;
+			sh:resultPath uco-observable:mimeType ;
+			sh:resultSeverity sh:Info ;
+			sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+			sh:sourceShape uco-observable:mimeType-class-types-MIMEFormat ;
+			sh:value <http://purl.org/NET/mediatypes/application/zip> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode [
+				a uco-observable:ContentDataFacet ;
+				uco-observable:mimeType <http://purl.org/NET/mediatypes/image/jpeg> ;
+			] ;
+			sh:resultMessage "Value is not an instance of types:MIMEFormat or one of its subclasses.  Please consider using a value having type types:IANAMediaType or types:NonIANAMediaType."@en ;
+			sh:resultPath uco-observable:mimeType ;
+			sh:resultSeverity sh:Info ;
+			sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+			sh:sourceShape uco-observable:mimeType-class-types-MIMEFormat ;
+			sh:value <http://purl.org/NET/mediatypes/image/jpeg> ;
+		] ,
+		[
+			a sh:ValidationResult ;
+			sh:focusNode [
+				a uco-observable:ContentDataFacet ;
+				uco-observable:mimeType <http://purl.org/NET/mediatypes/text/xml> ;
+			] ;
+			sh:resultMessage "Value is not an instance of types:MIMEFormat or one of its subclasses.  Please consider using a value having type types:IANAMediaType or types:NonIANAMediaType."@en ;
+			sh:resultPath uco-observable:mimeType ;
+			sh:resultSeverity sh:Info ;
+			sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+			sh:sourceShape uco-observable:mimeType-class-types-MIMEFormat ;
+			sh:value <http://purl.org/NET/mediatypes/text/xml> ;
+		]
+		;
+	.
+
