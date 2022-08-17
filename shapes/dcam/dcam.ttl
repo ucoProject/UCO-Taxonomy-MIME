@@ -1,0 +1,21 @@
+@prefix dcam: <http://purl.org/dc/dcam/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix uco-dcam: <https://taxonomy.unifiedcyberontology.org/dcam/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://taxonomy.unifiedcyberontology.org/dcam>
+	a owl:Ontology ;
+	owl:versionIRI uco-dcam:0.0.1 ;
+	owl:versionInfo "0.0.1" ;
+	.
+
+uco-dcam:memberOf-shape
+	a sh:PropertyShape ;
+	sh:class dcam:VocabularyEncodingScheme ;
+	sh:path dcam:memberOf ;
+	sh:targetSubjectsOf dcam:memberOf ;
+	.
+

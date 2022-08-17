@@ -1,0 +1,82 @@
+# imports: https://ontology.unifiedcyberontology.org/uco/observable
+
+@prefix dcam: <http://purl.org/dc/dcam/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix uco-observable: <https://ontology.unifiedcyberontology.org/uco/observable/> .
+@prefix uco-types: <https://ontology.unifiedcyberontology.org/uco/types/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://taxonomy.unifiedcyberontology.org/uco>
+	a owl:Ontology ;
+	rdfs:comment "This ontology defines extension constraints atop the UCO Observable and Types ontologies."@en ;
+	owl:imports <https://ontology.unifiedcyberontology.org/uco/observable> ;
+	owl:versionIRI <https://taxonomy.unifiedcyberontology.org/uco/0.0.1> ;
+	owl:versionInfo "0.0.1" ;
+	sh:declare [
+		sh:namespace "https://ontology.unifiedcyberontology.org/uco/types/"^^xsd:anyURI ;
+		sh:prefix "uco-types" ;
+	] ;
+	.
+
+uco-observable:mimeType-notation
+	rdfs:comment "This shape is overridden when the UCO taxonomy shapes are incorporated."@en ;
+	sh:deactivated "true"^^xsd:boolean ;
+	.
+
+uco-types:IANAMediaType
+	a sh:NodeShape ;
+	rdfs:comment "Within the UCO MIME taxonomy, MIMEFormat is extended from an OWL Class to also be a reflexive SHACL shape."@en ;
+	sh:property [
+		a sh:PropertyShape ;
+		sh:class dcterms:FileFormat ;
+		sh:message "UCO IANAMediaType individuals are required to declare that they are an exact match to a FileFormat individual that is a member of the Dublin Core Terms IMT vocabulary."@en ;
+		sh:path skos:exactMatch ;
+		sh:qualifiedMinCount "1"^^xsd:integer ;
+		sh:qualifiedValueShape [
+			a sh:PropertyShape ;
+			sh:hasValue dcterms:IMT ;
+			sh:path dcam:memberOf ;
+		] ;
+	] ;
+	sh:targetClass uco-types:IANAMediaType ;
+	.
+
+uco-types:MIMEFormat
+	a sh:NodeShape ;
+	rdfs:comment "Within the UCO MIME taxonomy, MIMEFormat is extended from an OWL Class to also be a reflexive SHACL shape."@en ;
+	sh:property [
+		a sh:PropertyShape ;
+		rdfs:comment "Usage of datatype xsd:string as the typed-literal typing is an intentional restriction over SKOS permitting any string datatype."@en ;
+		sh:datatype xsd:string ;
+		sh:description "MIMEFormat individuals are required to have exactly one skos:notation, and it must have no language string.  The skos:notation is used to encode the 'type/subtype' format commonly used for IANA Media Types, such as 'application/mp3'."@en ;
+		sh:minCount "1"^^xsd:integer ;
+		sh:path skos:notation ;
+	] ;
+	sh:targetClass uco-types:MIMEFormat ;
+	.
+
+uco-types:NonIANAMediaType
+	a sh:NodeShape ;
+	rdfs:comment
+		"Maintainers of this repository might observe this reported as a build error if a type locally defined in this taxonomy later becomes registered with IANA."@en ,
+		"Within the UCO MIME taxonomy, MIMEFormat is extended from an OWL Class to also be a reflexive SHACL shape."@en
+		;
+	sh:sparql [
+		a sh:SPARQLConstraint ;
+		sh:message "uco-types:IANAMediaType and uco-types:NonIANAMediaType are disjoint classes."@en ;
+		sh:prefixes <https://ontology.unifiedcyberontology.org/uco/types/> ;
+		sh:select """
+			SELECT $this
+			WHERE {
+				$this a uco-types:IANAMediaType .
+			}
+		""" ;
+	] ;
+	sh:targetClass uco-types:NonIANAMediaType ;
+	.
+

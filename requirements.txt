@@ -1,0 +1,10 @@
+# This repository avoids dependency on the case-utils package, in case
+# the CASE community decides it is worth shipping the taxonomy as part
+# of that package.
+
+mypy
+pandas
+pyshacl
+pytest
+rdflib >= 6.2.0
+tabulate

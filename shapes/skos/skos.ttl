@@ -1,0 +1,82 @@
+# imports: http://www.w3.org/TR/skos-reference/skos-owl1-dl.rdf
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix uco-skos: <https://taxonomy.unifiedcyberontology.org/skos/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://taxonomy.unifiedcyberontology.org/skos>
+	a owl:Ontology ;
+	owl:imports <http://www.w3.org/TR/skos-reference/skos-owl1-dl.rdf> ;
+	owl:versionIRI uco-skos:0.0.1 ;
+	owl:versionInfo "0.0.1" ;
+	sh:declare [
+		sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
+		sh:prefix "skos" ;
+	] ;
+	.
+
+uco-skos:exactMatch-shape
+	a sh:NodeShape ;
+	sh:property [
+		a sh:PropertyShape ;
+		sh:class skos:Concept ;
+		sh:path skos:exactMatch ;
+	] ;
+	sh:sparql [
+		a sh:SPARQLConstraint ;
+		rdfs:comment "skos:exactMatch is a subproperty of skos:closeMatch, which is a subproperty of skos:mappingRelation.  This shape was written for skos:exactMatch in order to not make skos:exactMatch review require RDFS inferencing."@en ;
+		rdfs:seeAlso <https://www.w3.org/TR/skos-reference/#mapping> ;
+		sh:message "SKOS mappingRelation properties and sub-properties relate concepts between different concept schemes.  A scheme contains two errantly mapped concepts, the focus node and the value node."@en ;
+		sh:prefixes <http://www.w3.org/2004/02/skos/core#> ;
+		sh:select """
+			SELECT $this $value
+			WHERE {
+				$this
+					skos:exactMatch $value ;
+					skos:inScheme ?nScheme ;
+					.
+				$value
+					skos:inScheme ?nScheme ;
+					.
+				FILTER ( $this != $value ) .
+			}
+			""" ;
+	] ;
+	sh:targetSubjectsOf skos:exactMatch ;
+	.
+
+uco-skos:notation-shape
+	a sh:NodeShape ;
+	sh:property [
+		a sh:PropertyShape ;
+		sh:maxCount "1"^^xsd:integer ;
+		sh:nodeKind sh:Literal ;
+		sh:path skos:notation ;
+	] ;
+	sh:sparql [
+		a sh:SPARQLConstraint ;
+		rdfs:seeAlso <https://www.w3.org/TR/skos-reference/#notations> ;
+		sh:message "SKOS Notations must be unique within concept schemes."@en ;
+		sh:prefixes <http://www.w3.org/2004/02/skos/core#> ;
+		sh:select """
+			SELECT $this $value
+			WHERE {
+				$this
+					skos:notation $value ;
+					skos:inScheme ?nScheme ;
+					.
+				?nOther
+					skos:notation $value ;
+					skos:inScheme ?nScheme ;
+					.
+				FILTER ( $this != ?nOther ) .
+			}
+			""" ;
+	] ;
+	sh:targetSubjectsOf skos:notation ;
+	.
+

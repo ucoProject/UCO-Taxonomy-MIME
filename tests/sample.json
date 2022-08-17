@@ -1,0 +1,210 @@
+{
+    "@context": {
+        "dcterms-mime": "http://purl.org/NET/mediatypes/",
+        "kb": "http://example.org/kb/",
+        "uco-core": "https://ontology.unifiedcyberontology.org/uco/core/",
+        "uco-mime": "https://taxonomy.unifiedcyberontology.org/uco/mime/",
+        "uco-observable": "https://ontology.unifiedcyberontology.org/uco/observable/",
+        "uco-observable:mimeType": {
+            "@type": "@id"
+        }
+    },
+    "@graph": [
+        {
+            "@id": "kb:gz-dct-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "dcterms-mime:application/gzip"
+            }
+        },
+        {
+            "@id": "kb:gz-uco-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "uco-mime:application/gzip"
+            }
+        },
+        {
+            "@id": "kb:jpeg-dct-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "dcterms-mime:image/jpeg"
+            }
+        },
+        {
+            "@id": "kb:jpeg-uco-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "uco-mime:image/jpeg"
+            }
+        },
+        {
+            "@id": "kb:jpg-uco-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "uco-mime:image/jpg"
+            }
+        },
+        {
+            "@id": "kb:json-dct-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "dcterms-mime:application/json"
+            }
+        },
+        {
+            "@id": "kb:json-uco-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "uco-mime:application/json"
+            }
+        },
+        {
+            "@id": "kb:jsonld-dct-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "dcterms-mime:application/ld+json"
+            }
+        },
+        {
+            "@id": "kb:jsonld-uco-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "uco-mime:application/ld+json"
+            }
+        },
+        {
+            "@id": "kb:rdf-dct-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "dcterms-mime:application/rdf+xml"
+            }
+        },
+        {
+            "@id": "kb:rdf-uco-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "uco-mime:application/rdf+xml"
+            }
+        },
+        {
+            "@id": "kb:tar-uco-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": [
+                {
+                    "@type": "uco-observable:ContentDataFacet",
+                    "uco-observable:mimeType": "uco-mime:application/tar"
+                },
+                {
+                    "@type": "uco-observable:FileFacet",
+                    "uco-observable:fileName": "example.tar"
+                }
+            ]
+        },
+        {
+            "@id": "kb:targz-uco-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": [
+                {
+                    "@type": "uco-observable:ContentDataFacet",
+                    "uco-observable:mimeType": "uco-mime:application/tar+gzip"
+                },
+                {
+                    "@type": "uco-observable:FileFacet",
+                    "uco-observable:fileName": "example.tar.gz"
+                }
+            ]
+        },
+        {
+            "@id": "kb:xls-dct-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "dcterms-mime:application/vnd.ms-excel"
+            }
+        },
+        {
+            "@id": "kb:xls-uco-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "uco-mime:application/vnd.ms-excel"
+            }
+        },
+        {
+            "@id": "kb:xlsx-dct-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "dcterms-mime:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            }
+        },
+        {
+            "@id": "kb:xlsx-uco-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "uco-mime:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            }
+        },
+        {
+            "@id": "kb:xml-a-dct-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "dcterms-mime:application/xml"
+            }
+        },
+        {
+            "@id": "kb:xml-a-uco-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "uco-mime:application/xml"
+            }
+        },
+        {
+            "@id": "kb:xml-t-dct-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "dcterms-mime:text/xml"
+            }
+        },
+        {
+            "@id": "kb:xml-t-uco-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "uco-mime:text/xml"
+            }
+        },
+        {
+            "@id": "kb:zip-dct-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "dcterms-mime:application/zip"
+            }
+        },
+        {
+            "@id": "kb:zip-uco-1",
+            "@type": "uco-observable:File",
+            "uco-core:hasFacet": {
+                "@type": "uco-observable:ContentDataFacet",
+                "uco-observable:mimeType": "uco-mime:application/zip"
+            }
+        }
+    ]
+}

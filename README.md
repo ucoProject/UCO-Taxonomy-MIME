@@ -1,5 +1,7 @@
 # (Proposal) Unified Cyber Ontology (UCO) MIME Taxonomy
 
+[![Project Status: Concept – Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
+
 
 ## Disclaimer
 
@@ -11,22 +13,35 @@ Participation by NIST in the creation of the documentation of mentioned software
 
 ### Repository maturity
 
-*This repository is UNDER PROPOSAL and subject to revision and/or rejection by the UCO community.  Feedback is welcome, and can be provided in UCO Jira ticket [OC-204](https://unifiedcyberontology.atlassian.net/browse/OC-204), its associated Change Proposal page, or directly on this repository as an Issue.*
+*This repository is UNDER PROPOSAL and subject to revision and/or rejection by the UCO community.  Feedback is welcome, and can be provided in its associated Issue on the UCO Issue Tracker (https://github.com/ucoProject/UCO/issues/363), or directly on this repository as an Issue.*
 
-IRIs and/or URLs referenced in this repository are not yet operational.
+IRIs and/or URLs referenced in this repository under `taxonomy.unifiedcyberontology.org` are not yet operational.
 
 
 ### Data purpose
 
-This repository provides a SKOS taxonomy as a member of UCO ontological resources.  The taxonomy converts the [IANA Media Types registry](https://www.iana.org/assignments/media-types/) into SKOS under a UCO namespace, following a mostly two-tier [`skos:ConceptScheme`](https://www.w3.org/TR/skos-reference/#schemes):
+This repository provides the [IANA Media Types registry](https://www.iana.org/assignments/media-types/) as a [SKOS](https://www.w3.org/TR/skos-primer/) taxonomy, as well as a parallel, specialized set of taxons that allow a user to represent Media Types as bearers of unique labels, and also sometimes to relate to one another.  The rationale for using SKOS is:
 
-* The `ConceptScheme`'s top-level concepts are each Media Type Registry, such as `application`, `image`, etc.
-* The second tier of `Concept`s is the media type in each registry, such as `application/zip`, `image/gif`, etc.
-* Some extension media types not part of IANA are defined for various reasons, and may or may not be submitted in the future for standardization to IANA.  These extensions follow the non-registration practice of [RFC 6838, Section 3.4], and all include the string [`/x-uco-`].
+* Media Types present a use case of a vocabulary that has members of varying degrees of clarity:
+   - Names registered with IANA, which are standardized values;
+   - Names that follow an IANA-recommended extension pattern, such as including `x-` in the subtype;
+   - Names that are neither IANA-registered nor follow an extension pattern, but have seen wide use, such as `application/tar`.
+
+To enable interoperability with data models that use the [Dublin Core Terms MediaType concept](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/MediaType), each media type `skos:Concept` is also designated as a subclass of `dcterms:FileFormat`, defined in [UCO's types ontology](https://ontology.unifiedcyberontology.org/uco/types/).  *(Editorial note: The ontology update that ties in `dcterms:FileFOramt` is under proposal in [UCO PR 377](https://github.com/ucoProject/UCO/pull/377).)*
+
+
+#### Data documentation
+
+See [the data README](documentation/README.md) for data usage notes and extension summaries.
+
+See [this document](documentation/design.md) for design rationales.
+
+
+#### Data usage
 
 This repository's primary product is a monolithic ontology and taxonomy file, serialized in Turtle, [`mime.ttl`](taxonomy/mime/mime.ttl).
 
-The expected usage pattern of this file is via importing or referencing its versioned or unversioned IRI as a URL, e.g.:
+The expected usage pattern of this file is via importing or referencing its versioned, or unversioned, IRI as a URL.  Respective examples:
 
 ```turtle
 <http://example.org/versioned-importing-ontology>
@@ -41,29 +56,48 @@ or:
 ```turtle
 <http://example.org/unversioned-importing-ontology>
   a owl:Ontology ;
-  rdfs:comment "An example ontology that imports the monolithic taxonomy via its versioned IRI."@en ;
+  rdfs:comment "An example ontology that imports the monolithic taxonomy via its unversioned IRI."@en ;
   owl:imports <https://taxonomy.unifiedcyberontology.org/uco/mime> ;
   .
 ```
 
+Media Type individuals can be used either from their UCO IRIs or their Dublin Core Terms `FileFormat` IRIs.
+
+```turtle
+<https://taxonomy.unifiedcyberontology.org/uco/mime/application/ld+json>
+	a
+		prov:Entity ,
+		uco-types:IANAMediaType
+		;
+	rdfs:isDefinedBy <https://www.iana.org/assignments/media-types/application/ld+json> ;
+	skos:broader <https://taxonomy.unifiedcyberontology.org/uco/mime/application/json> ;
+	skos:exactMatch <http://purl.org/NET/mediatypes/application/ld+json> ;
+	skos:inScheme uco-mime:MIMEScheme ;
+	skos:notation "application/ld+json" ;
+	.
+```
+
+Note that the Dublin Core Terms concepts are minimally serialized within this repository, and may differ when retrieved from the Dublin Core IRI.
+
 
 ### Software purpose
 
-Software is included to generate, format, and test the functionality of `mime.ttl`.  Software review mechanisms are also included.
+Software is included to generate, format, and test the functionality and conformance of `mime.ttl`.  Software review mechanisms---such as syntax normalization with [`black`](https://github.com/psf/black) and static type review with [`mypy`](https://github.com/python/mypy)---are also included and run with [`pre-commit`](https://pre-commit.com/) as part of unit testing.
 
-End users of this repository should have no need to interface with the software directly.  The software is provided for maintainers within the UCO community.
+For review of data quality and consistency with adopted models, SHACL shapes are provided in `shapes/*/*.ttl`.  Their usage with [`pyshacl`](https://github.com/RDFLib/pySHACL) is demonstrated in the [unit tests `Makefile`](tests/Makefile).
+
+End users of this repository should have no need to interface with this repository's software directly.  The software is provided for maintainers within the UCO community.
 
 
 #### Technical installation instructions
 
-This repository includes no installable software.
+This repository does not include installable Python software.
+
+The SHACL files used in data quality review can be incorporated into any compilation of SHACL shapes for review of data using the referenced data models.
+
+Unit tests can be run locally by cloning this repository, descending into it, and running `make check`.
 
 Contributors and maintainers should review [CONTRIBUTE.md](CONTRIBUTE.md).
-
-
-## Contact information
-
-* PI name: [Alex Nelson](https://www.nist.gov/people/alexander-nelson), [Information Technology Laboratory](https://www.nist.gov/itl), [Computer Security Division](https://www.nist.gov/itl/csd), [Security Components and Mechanisms Group](https://www.nist.gov/itl/csd/security-components-and-mechanisms), [alexander.nelson@nist.gov](mailto:alexander.nelson@nist.gov).
 
 
 ## Related Material
@@ -75,18 +109,8 @@ Contributors and maintainers should review [CONTRIBUTE.md](CONTRIBUTE.md).
 * [Dublin Core Terms](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/)
 
 
-## Directions on appropriate citation
-
-To cite this resource, please use this DOI:
-
-TODO
-
-
-## Non-public-domain software modules
+## Terms of Use
 
 Certain non-public-domain software resources are used in this repository, but not re-distributed.  Their usage is governed by their respective licenses.
 
-
-## Terms of Use
-
-See [LICENSE.md](LICENSE.md).
+Portions of this repository contributed by NIST are governed by the [NIST Software Licensing Statement](LICENSE.md#nist-software-licensing-statement).

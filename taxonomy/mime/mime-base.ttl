@@ -1,0 +1,119 @@
+# imports: https://taxonomy.unifiedcyberontology.org/dcam/0.0.1
+# imports: https://taxonomy.unifiedcyberontology.org/dcterms/0.0.1
+# imports: https://taxonomy.unifiedcyberontology.org/skos/0.0.1
+# imports: https://taxonomy.unifiedcyberontology.org/uco/0.0.1
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix uco-mime: <https://taxonomy.unifiedcyberontology.org/uco/mime/> .
+@prefix uco-types: <https://ontology.unifiedcyberontology.org/uco/types/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://taxonomy.unifiedcyberontology.org/uco/mime>
+	a owl:Ontology ;
+	rdfs:label "uco-mime"@en ;
+	dcterms:description "A taxonomy generated from the IANA Media Types XML feed, supplemented with unregistered extension MIME types identified by the UCO community."@en-US ;
+	dcterms:title "UCO MIME types"@en ;
+	owl:imports
+		<https://taxonomy.unifiedcyberontology.org/dcam/0.0.1> ,
+		<https://taxonomy.unifiedcyberontology.org/dcterms/0.0.1> ,
+		<https://taxonomy.unifiedcyberontology.org/skos/0.0.1> ,
+		<https://taxonomy.unifiedcyberontology.org/uco/0.0.1>
+		;
+	owl:versionIRI uco-mime:0.0.1 ;
+	owl:versionInfo "0.0.1" ;
+	.
+
+uco-mime:MIMEScheme
+	a skos:ConceptScheme ;
+	rdfs:comment "This ConceptScheme defines a scope within which member skos:notations must be unique."@en ;
+	.
+
+<https://taxonomy.unifiedcyberontology.org/uco/mime/application/ld+json>
+	skos:broader <https://taxonomy.unifiedcyberontology.org/uco/mime/application/json> ;
+	.
+
+<https://taxonomy.unifiedcyberontology.org/uco/mime/application/rdf+xml>
+	skos:broader <https://taxonomy.unifiedcyberontology.org/uco/mime/application/xml> ;
+	.
+
+<https://taxonomy.unifiedcyberontology.org/uco/mime/application/tar>
+	a uco-types:NonIANAMediaType ;
+	skos:notation "application/tar" ;
+	prov:alternateOf <https://taxonomy.unifiedcyberontology.org/uco/mime/application/x-tar> ;
+	.
+
+<https://taxonomy.unifiedcyberontology.org/uco/mime/application/tar+gzip>
+	a uco-types:NonIANAMediaType ;
+	skos:broader
+		<https://taxonomy.unifiedcyberontology.org/uco/mime/application/gzip> ,
+		<https://taxonomy.unifiedcyberontology.org/uco/mime/application/tar>
+		;
+	skos:notation "application/tar+gzip" ;
+	prov:alternateOf <https://taxonomy.unifiedcyberontology.org/uco/mime/application/x-tar+gzip> ;
+	.
+
+<https://taxonomy.unifiedcyberontology.org/uco/mime/application/vnd.openxmlformats-officedocument.presentationml.presentation>
+	skos:broader <https://taxonomy.unifiedcyberontology.org/uco/mime/application/zip> ;
+	.
+
+<https://taxonomy.unifiedcyberontology.org/uco/mime/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet>
+	skos:broader <https://taxonomy.unifiedcyberontology.org/uco/mime/application/zip> ;
+	.
+
+<https://taxonomy.unifiedcyberontology.org/uco/mime/application/vnd.openxmlformats-officedocument.wordprocessingml.document>
+	skos:broader <https://taxonomy.unifiedcyberontology.org/uco/mime/application/zip> ;
+	.
+
+<https://taxonomy.unifiedcyberontology.org/uco/mime/application/x-tar>
+	a uco-types:NonIANAMediaType ;
+	skos:notation "application/x-tar" ;
+	.
+
+<https://taxonomy.unifiedcyberontology.org/uco/mime/application/x-tar+gzip>
+	a uco-types:NonIANAMediaType ;
+	rdfs:comment "The media type suffix +gzip is registered in RFC 8460, Section 6.3."@en ;
+	rdfs:seeAlso <https://www.rfc-editor.org/rfc/rfc8460.html#section-6.3> ;
+	skos:broader
+		<https://taxonomy.unifiedcyberontology.org/uco/mime/application/gzip> ,
+		<https://taxonomy.unifiedcyberontology.org/uco/mime/application/x-tar>
+		;
+	skos:notation "application/x-tar+gzip" ;
+	.
+
+<https://taxonomy.unifiedcyberontology.org/uco/mime/application/xml>
+	rdfs:comment "text/xml is defined in RFC 7303 as an alias for application/xml."@en ;
+	rdfs:seeAlso <https://www.rfc-editor.org/rfc/rfc7303.html> ;
+	prov:alternateOf <https://taxonomy.unifiedcyberontology.org/uco/mime/text/xml> ;
+	.
+
+<https://taxonomy.unifiedcyberontology.org/uco/mime/application/xml-external-parsed-entity>
+	rdfs:comment "text/xml-external-parsed-entity is defined in RFC 7303 as an alias for application/xml-external-parsed-entity."@en ;
+	rdfs:seeAlso <https://www.rfc-editor.org/rfc/rfc7303.html> ;
+	prov:alternateOf <https://taxonomy.unifiedcyberontology.org/uco/mime/text/xml-external-parsed-entity> ;
+	.
+
+<https://taxonomy.unifiedcyberontology.org/uco/mime/image/jpg>
+	a uco-types:NonIANAMediaType ;
+	rdfs:comment "image/jpg is frequently entered in data, but the IANA media type is image/jpeg."@en ;
+	skos:notation "image/jpg" ;
+	prov:alternateOf <https://taxonomy.unifiedcyberontology.org/uco/mime/image/jpeg> ;
+	.
+
+<https://taxonomy.unifiedcyberontology.org/uco/mime/text/xml>
+	rdfs:comment "text/xml is defined in RFC 7303 as an alias for application/xml."@en ;
+	rdfs:seeAlso <https://www.rfc-editor.org/rfc/rfc7303.html> ;
+	prov:alternateOf <https://taxonomy.unifiedcyberontology.org/uco/mime/application/xml> ;
+	.
+
+<https://taxonomy.unifiedcyberontology.org/uco/mime/text/xml-external-parsed-entity>
+	rdfs:comment "text/xml-external-parsed-entity is defined in RFC 7303 as an alias for application/xml-external-parsed-entity."@en ;
+	rdfs:seeAlso <https://www.rfc-editor.org/rfc/rfc7303.html> ;
+	prov:alternateOf <https://taxonomy.unifiedcyberontology.org/uco/mime/application/xml-external-parsed-entity> ;
+	.
+

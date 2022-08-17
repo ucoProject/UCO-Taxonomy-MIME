@@ -1,0 +1,70 @@
+{
+    "@context": {
+        "kb": "http://example.org/kb/",
+        "skos": "http://www.w3.org/2004/02/skos/core#"
+    },
+    "@graph": [
+        {
+            "@id": "kb:concept-1",
+            "@type": "skos:Concept",
+            "skos:exactMatch": [
+                {
+                    "@id": "kb:concept-2"
+                },
+                {
+                    "@id": "kb:concept-3"
+                }
+            ],
+            "skos:inScheme": [
+                {
+                    "@id": "kb:concept-scheme-1"
+                },
+                {
+                    "@id": "kb:concept-scheme-2"
+                }
+            ]
+        },
+        {
+            "@id": "kb:concept-2",
+            "@type": "skos:Concept",
+            "skos:exactMatch": [
+                {
+                    "@id": "kb:concept-1"
+                },
+                {
+                    "@id": "kb:concept-3"
+                }
+            ],
+            "skos:inScheme": [
+                {
+                    "@id": "kb:concept-scheme-1"
+                }
+            ]
+        },
+        {
+            "@id": "kb:concept-3",
+            "@type": "skos:Concept",
+            "skos:exactMatch": [
+                {
+                    "@id": "kb:concept-1"
+                },
+                {
+                    "@id": "kb:concept-2"
+                }
+            ],
+            "skos:inScheme": [
+                {
+                    "@id": "kb:concept-scheme-2"
+                }
+            ]
+        },
+        {
+            "@id": "kb:concept-scheme-1",
+            "@type": "skos:ConceptScheme"
+        },
+        {
+            "@id": "kb:concept-scheme-2",
+            "@type": "skos:ConceptScheme"
+        }
+    ]
+}

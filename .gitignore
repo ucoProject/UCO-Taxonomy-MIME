@@ -1,0 +1,5 @@
+*.swp
+.*.done.log
+.check-*ttl
+.venv-pre-commit
+venv
