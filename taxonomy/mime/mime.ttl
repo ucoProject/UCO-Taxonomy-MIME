@@ -1,6 +1,6 @@
 # imports: https://taxonomy.unifiedcyberontology.org/dcam/0.0.1
 # imports: https://taxonomy.unifiedcyberontology.org/dcterms/0.0.1
-# imports: https://taxonomy.unifiedcyberontology.org/skos/0.0.1
+# imports: https://taxonomy.unifiedcyberontology.org/skos/0.0.2
 # imports: https://taxonomy.unifiedcyberontology.org/uco/0.0.1
 
 @prefix dcam: <http://purl.org/dc/dcam/> .
@@ -22,7 +22,7 @@
 	owl:imports
 		<https://taxonomy.unifiedcyberontology.org/dcam/0.0.1> ,
 		<https://taxonomy.unifiedcyberontology.org/dcterms/0.0.1> ,
-		<https://taxonomy.unifiedcyberontology.org/skos/0.0.1> ,
+		<https://taxonomy.unifiedcyberontology.org/skos/0.0.2> ,
 		<https://taxonomy.unifiedcyberontology.org/uco/0.0.1>
 		;
 	owl:versionIRI uco-mime:0.0.1 ;

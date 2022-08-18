@@ -11,8 +11,8 @@
 <https://taxonomy.unifiedcyberontology.org/skos>
 	a owl:Ontology ;
 	owl:imports <http://www.w3.org/TR/skos-reference/skos-owl1-dl.rdf> ;
-	owl:versionIRI uco-skos:0.0.1 ;
-	owl:versionInfo "0.0.1" ;
+	owl:versionIRI uco-skos:0.0.2 ;
+	owl:versionInfo "0.0.2" ;
 	sh:declare [
 		sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
 		sh:prefix "skos" ;
@@ -53,14 +53,16 @@ uco-skos:notation-shape
 	a sh:NodeShape ;
 	sh:property [
 		a sh:PropertyShape ;
-		sh:maxCount "1"^^xsd:integer ;
 		sh:nodeKind sh:Literal ;
 		sh:path skos:notation ;
 	] ;
 	sh:sparql [
 		a sh:SPARQLConstraint ;
-		rdfs:seeAlso <https://www.w3.org/TR/skos-reference/#notations> ;
-		sh:message "SKOS Notations must be unique within concept schemes."@en ;
+		rdfs:seeAlso
+			<https://www.w3.org/TR/skos-reference/#L2646> ,
+			<https://www.w3.org/TR/skos-reference/#notations>
+			;
+		sh:message "'By convention, no two concepts in the same concept scheme are given the same notation' [SKOS Reference, Section 6.5.3, Unique Notations in Concept Schemes]."@en ;
 		sh:prefixes <http://www.w3.org/2004/02/skos/core#> ;
 		sh:select """
 			SELECT $this $value
