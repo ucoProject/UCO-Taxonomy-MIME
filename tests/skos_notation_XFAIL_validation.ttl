@@ -13,12 +13,15 @@
 		[
 			a sh:ValidationResult ;
 			sh:focusNode <http://example.org/kb/concept-1> ;
-			sh:resultMessage "SKOS Notations must be unique within concept schemes." ;
+			sh:resultMessage "'By convention, no two concepts in the same concept scheme are given the same notation' [SKOS Reference, Section 6.5.3, Unique Notations in Concept Schemes]." ;
 			sh:resultSeverity sh:Violation ;
 			sh:sourceConstraint [
 				a sh:SPARQLConstraint ;
-				rdfs:seeAlso <https://www.w3.org/TR/skos-reference/#notations> ;
-				sh:message "SKOS Notations must be unique within concept schemes."@en ;
+				rdfs:seeAlso
+					<https://www.w3.org/TR/skos-reference/#L2646> ,
+					<https://www.w3.org/TR/skos-reference/#notations>
+					;
+				sh:message "'By convention, no two concepts in the same concept scheme are given the same notation' [SKOS Reference, Section 6.5.3, Unique Notations in Concept Schemes]."@en ;
 				sh:prefixes <http://www.w3.org/2004/02/skos/core#> ;
 				sh:select """
 			SELECT $this $value
@@ -42,12 +45,15 @@
 		[
 			a sh:ValidationResult ;
 			sh:focusNode <http://example.org/kb/concept-2> ;
-			sh:resultMessage "SKOS Notations must be unique within concept schemes." ;
+			sh:resultMessage "'By convention, no two concepts in the same concept scheme are given the same notation' [SKOS Reference, Section 6.5.3, Unique Notations in Concept Schemes]." ;
 			sh:resultSeverity sh:Violation ;
 			sh:sourceConstraint [
 				a sh:SPARQLConstraint ;
-				rdfs:seeAlso <https://www.w3.org/TR/skos-reference/#notations> ;
-				sh:message "SKOS Notations must be unique within concept schemes."@en ;
+				rdfs:seeAlso
+					<https://www.w3.org/TR/skos-reference/#L2646> ,
+					<https://www.w3.org/TR/skos-reference/#notations>
+					;
+				sh:message "'By convention, no two concepts in the same concept scheme are given the same notation' [SKOS Reference, Section 6.5.3, Unique Notations in Concept Schemes]."@en ;
 				sh:prefixes <http://www.w3.org/2004/02/skos/core#> ;
 				sh:select """
 			SELECT $this $value
