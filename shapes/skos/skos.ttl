@@ -53,7 +53,6 @@ uco-skos:notation-shape
 	a sh:NodeShape ;
 	sh:property [
 		a sh:PropertyShape ;
-		sh:maxCount "1"^^xsd:integer ;
 		sh:nodeKind sh:Literal ;
 		sh:path skos:notation ;
 	] ;
