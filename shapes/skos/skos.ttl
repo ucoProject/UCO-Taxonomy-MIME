@@ -11,8 +11,8 @@
 <https://taxonomy.unifiedcyberontology.org/skos>
 	a owl:Ontology ;
 	owl:imports <http://www.w3.org/TR/skos-reference/skos-owl1-dl.rdf> ;
-	owl:versionIRI uco-skos:0.0.1 ;
-	owl:versionInfo "0.0.1" ;
+	owl:versionIRI uco-skos:0.0.2 ;
+	owl:versionInfo "0.0.2" ;
 	sh:declare [
 		sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
 		sh:prefix "skos" ;
